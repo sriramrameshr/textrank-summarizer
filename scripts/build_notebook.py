@@ -19,6 +19,8 @@ from nbclient.exceptions import CellExecutionError
 ROOT = Path(__file__).resolve().parent.parent
 NOTEBOOK = ROOT / "notebooks" / "textrank_evaluation.ipynb"
 STUDENT = json.loads((ROOT / "report" / "student.json").read_text(encoding="utf-8"))
+GUIDE = STUDENT.get("guide", "").strip()
+GUIDE_ROW = f"| **Guide** | _{GUIDE}_ |" if GUIDE else ""
 
 CELLS: list[tuple[str, str]] = []
 
@@ -43,7 +45,7 @@ md(
 | **Student** | _{STUDENT['student_name']}_ |
 | **Roll number** | _{STUDENT['roll_number']}_ |
 | **Course / semester** | _{STUDENT['course']} — {STUDENT['semester']}_ |
-| **Guide** | _{STUDENT['guide']}_ |
+{GUIDE_ROW}
 | **Institution** | _{STUDENT['institution']}_ |
 | **Date** | _{STUDENT['submission_date']}_ |
 

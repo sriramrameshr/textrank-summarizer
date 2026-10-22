@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T16:31:17+00:00",
+  "generated_at": "2026-10-22T16:45:47+00:00",
   "python": "3.14.3",
   "platform": "Windows-11-10.0.26200-SP0",
   "dataset": {
@@ -37,8 +37,8 @@
   "evaluation": {
     "predictions": 3600,
     "documents": 150,
-    "total_runtime_seconds": 6.59,
-    "mean_textrank_runtime_ms": 3.248
+    "total_runtime_seconds": 6.6,
+    "mean_textrank_runtime_ms": 3.258
   },
   "packages": {
     "numpy": "2.5.4",

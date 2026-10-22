@@ -1,17 +1,17 @@
 
 <div class="cover">
-  <div class="cover-institution">Your Institution Name<br><span>Department of Computer Science and Engineering</span></div>
+  <div class="cover-institution">Easa College of Engineering and Technology<br><span>BE-CSE (AIML)</span></div>
   <div class="cover-rule"></div>
   <div class="cover-kicker">MINI PROJECT REPORT</div>
   <h1 class="cover-title">Extractive Text Summarisation with TextRank</h1>
   <div class="cover-subtitle">A TF-IDF sentence-graph approach evaluated with ROUGE-1, ROUGE-2 and ROUGE-L</div>
   <table class="cover-table">
-    <tr><td>Submitted by</td><td><strong>Your Full Name</strong></td></tr>
-    <tr><td>Roll number</td><td>Your Roll Number</td></tr>
-    <tr><td>Course</td><td>Natural Language Processing · Semester __</td></tr>
-    <tr><td>Project guide</td><td>Guide Name</td></tr>
+    <tr><td>Submitted by</td><td><strong>Sriram R</strong></td></tr>
+    <tr><td>Roll number</td><td>E720524AM029</td></tr>
+    <tr><td>Course</td><td>Natural Language Processing · Semester 5</td></tr>
+    
   </table>
-  <div class="cover-date">October 2026</div>
+  <div class="cover-date">23 October 2026</div>
 </div>
 
 <div class="page-break"></div>
@@ -85,7 +85,7 @@ Given a document consisting of sentences *S* = (S₁, …, Sₙ), produce a summ
 
 ### 1.4 Contributions
 
-* A clean, dependency-light implementation of TextRank that runs in about 3.2 ms per article on a CPU.
+* A clean, dependency-light implementation of TextRank that runs in about 3.3 ms per article on a CPU.
 * A reproducible ROUGE evaluation on a cached CNN/DailyMail slice, with bootstrap confidence intervals and paired significance tests.
 * An honest analysis of the Lead-3 effect, including per-document wins and losses.
 * A working demonstration application with live ROUGE scoring, and the full replication package (notebook, scripts, figures, report).
@@ -373,7 +373,7 @@ The best case (+35.8 ROUGE-1 points) is an article whose lede is scene-setting a
 
 ### 5.7 Efficiency
 
-At *k* = 3, TextRank takes **3.18 ms** per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.6 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.
+At *k* = 3, TextRank takes **3.24 ms** per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.6 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.
 
 ### 5.8 Demonstration application
 
@@ -508,7 +508,7 @@ All random operations are seeded (seed 42); rerunning the commands above reprodu
 <h2>Declaration</h2>
 <p>I declare that this mini project report is my own work. The implementation, experiments, figures and analysis were produced by me, and all external sources, libraries and datasets are acknowledged in the references and in the repository README.</p>
 <table class="signature">
-<tr><td>Name: Your Full Name</td><td>Signature: ______________________</td></tr>
-<tr><td>Roll number: Your Roll Number</td><td>Date: October 2026</td></tr>
+<tr><td>Name: Sriram R</td><td>Signature: ______________________</td></tr>
+<tr><td>Roll number: E720524AM029</td><td>Date: 23 October 2026</td></tr>
 </table>
 </div>

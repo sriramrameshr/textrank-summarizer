@@ -1,10 +1,10 @@
 {
-  "student_name": "Your Full Name",
-  "roll_number": "Your Roll Number",
+  "student_name": "Sriram R",
+  "roll_number": "E720524AM029",
   "course": "Natural Language Processing",
-  "semester": "Semester __",
-  "institution": "Your Institution Name",
-  "department": "Department of Computer Science and Engineering",
-  "guide": "Guide Name",
-  "submission_date": "October 2026"
+  "semester": "Semester 5",
+  "institution": "Easa College of Engineering and Technology",
+  "department": "BE-CSE (AIML)",
+  "guide": "",
+  "submission_date": "23 October 2026"
 }

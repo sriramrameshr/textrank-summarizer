@@ -20,6 +20,8 @@ ROOT = Path(__file__).resolve().parent.parent
 FIGURES = ROOT / "results" / "figures"
 DELIVERABLES = ROOT / "deliverables"
 STUDENT = json.loads((ROOT / "report" / "student.json").read_text(encoding="utf-8"))
+GUIDE = STUDENT.get("guide", "").strip()
+GUIDE_ROW = f'<tr><td>Guide</td><td>{html.escape(GUIDE)}</td></tr>' if GUIDE else ""
 RESULTS = pd.read_csv(ROOT / "results" / "results_table_k3.csv")
 LOG_TEXT = (ROOT / "results" / "experiment_log.txt").read_text(encoding="utf-8", errors="replace")
 EDGE_CANDIDATES = [
@@ -98,7 +100,7 @@ def build(temp_dir: Path) -> str:
     <tr><td>Student</td><td><strong>{html.escape(STUDENT["student_name"])}</strong></td></tr>
     <tr><td>Roll number</td><td>{html.escape(STUDENT["roll_number"])}</td></tr>
     <tr><td>Course</td><td>{html.escape(STUDENT["course"])} · {html.escape(STUDENT["semester"])}</td></tr>
-    <tr><td>Guide</td><td>{html.escape(STUDENT["guide"])}</td></tr>
+    {GUIDE_ROW}
   </table>
   <div class="cover-contents">
     <strong>Contents</strong>

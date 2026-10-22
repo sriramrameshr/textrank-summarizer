@@ -56,18 +56,18 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 </head>
 <body>
 <div class="cover">
-  <div class="cover-institution">Your Institution Name<br><span>Department of Computer Science and Engineering</span></div>
+  <div class="cover-institution">Easa College of Engineering and Technology<br><span>BE-CSE (AIML)</span></div>
   <div class="cover-rule"></div>
   <div class="cover-kicker">MINI PROJECT REPORT</div>
   <h1 class="cover-title">Extractive Text Summarisation with TextRank</h1>
   <div class="cover-subtitle">A TF-IDF sentence-graph approach evaluated with ROUGE-1, ROUGE-2 and ROUGE-L</div>
   <table class="cover-table">
-    <tr><td>Submitted by</td><td><strong>Your Full Name</strong></td></tr>
-    <tr><td>Roll number</td><td>Your Roll Number</td></tr>
-    <tr><td>Course</td><td>Natural Language Processing · Semester __</td></tr>
-    <tr><td>Project guide</td><td>Guide Name</td></tr>
+    <tr><td>Submitted by</td><td><strong>Sriram R</strong></td></tr>
+    <tr><td>Roll number</td><td>E720524AM029</td></tr>
+    <tr><td>Course</td><td>Natural Language Processing · Semester 5</td></tr>
+
   </table>
-  <div class="cover-date">October 2026</div>
+  <div class="cover-date">23 October 2026</div>
 </div>
 
 <div class="page-break"></div>
@@ -131,7 +131,7 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 </ol>
 <h3>1.4 Contributions</h3>
 <ul>
-<li>A clean, dependency-light implementation of TextRank that runs in about 3.2 ms per article on a CPU.</li>
+<li>A clean, dependency-light implementation of TextRank that runs in about 3.3 ms per article on a CPU.</li>
 <li>A reproducible ROUGE evaluation on a cached CNN/DailyMail slice, with bootstrap confidence intervals and paired significance tests.</li>
 <li>An honest analysis of the Lead-3 effect, including per-document wins and losses.</li>
 <li>A working demonstration application with live ROUGE scoring, and the full replication package (notebook, scripts, figures, report).</li>
@@ -678,7 +678,7 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 
 <p>The best case (+35.8 ROUGE-1 points) is an article whose lede is scene-setting and whose key facts appear later: the graph finds them, while Lead-3 cannot. The worst case (-49.0 points) shows the opposite pattern — a tightly written inverted-pyramid article in which the first three sentences already contain almost every reference fact. TextRank spends part of its budget on a central but background sentence, and precision falls.</p>
 <h3>5.7 Efficiency</h3>
-<p>At <em>k</em> = 3, TextRank takes <strong>3.18 ms</strong> per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.6 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.</p>
+<p>At <em>k</em> = 3, TextRank takes <strong>3.24 ms</strong> per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.6 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.</p>
 <h3>5.8 Demonstration application</h3>
 <figure><img src="../results/figures/app_overview.png" style="width:100%"><figcaption>Figure 8. Streamlit demonstration: generated summary, reference summary and live ROUGE metrics.</figcaption></figure>
 
@@ -791,8 +791,8 @@ python scripts/build_demo_video.py
 <h2>Declaration</h2>
 <p>I declare that this mini project report is my own work. The implementation, experiments, figures and analysis were produced by me, and all external sources, libraries and datasets are acknowledged in the references and in the repository README.</p>
 <table class="signature">
-<tr><td>Name: Your Full Name</td><td>Signature: ______________________</td></tr>
-<tr><td>Roll number: Your Roll Number</td><td>Date: October 2026</td></tr>
+<tr><td>Name: Sriram R</td><td>Signature: ______________________</td></tr>
+<tr><td>Roll number: E720524AM029</td><td>Date: 23 October 2026</td></tr>
 </table>
 </div>
 </body>

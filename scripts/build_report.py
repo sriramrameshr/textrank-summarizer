@@ -33,6 +33,10 @@ EDGE_CANDIDATES = [
 ]
 
 STUDENT = json.loads((REPORT_DIR / "student.json").read_text(encoding="utf-8"))
+GUIDE = STUDENT.get("guide", "").strip()
+GUIDE_ROW = (
+    f'<tr><td>Project guide</td><td>{html.escape(GUIDE)}</td></tr>' if GUIDE else ""
+)
 META = json.loads((ROOT / "results" / "run_metadata.json").read_text(encoding="utf-8"))
 PER_DOCUMENT = pd.read_csv(ROOT / "results" / "per_document.csv")
 TABLE_MAIN = pd.read_csv(ROOT / "results" / "results_table_k3.csv")
@@ -273,7 +277,7 @@ def build_markdown() -> str:
     <tr><td>Submitted by</td><td><strong>{html.escape(STUDENT["student_name"])}</strong></td></tr>
     <tr><td>Roll number</td><td>{html.escape(STUDENT["roll_number"])}</td></tr>
     <tr><td>Course</td><td>{html.escape(STUDENT["course"])} · {html.escape(STUDENT["semester"])}</td></tr>
-    <tr><td>Project guide</td><td>{html.escape(STUDENT["guide"])}</td></tr>
+    {GUIDE_ROW}
   </table>
   <div class="cover-date">{html.escape(STUDENT["submission_date"])}</div>
 </div>
