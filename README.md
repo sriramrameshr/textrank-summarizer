@@ -210,7 +210,7 @@ The cache makes the notebook, experiments and app fully reproducible offline. Th
 | Demo video (2–3 min) | `deliverables/demo_video.mp4` | Done — 2:48, 1080p, narrated; also attached to the GitHub release |
 | Public GitHub repository | <https://github.com/sriramrameshr/textrank-summarizer> | Done — public |
 
-**Demo video:** [github.com/sriramrameshr/textrank-summarizer/releases](https://github.com/sriramrameshr/textrank-summarizer/releases)
+**Demo video:** [download the 2:48 narrated MP4](https://github.com/sriramrameshr/textrank-summarizer/releases/download/v1.0/demo_video.mp4)
 
 **Before submitting, replace the placeholders:**
 
