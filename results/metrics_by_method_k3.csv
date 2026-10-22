@@ -1,0 +1,5 @@
+method,n_documents,rouge1_precision,rouge1_recall,rouge1_f1,rouge2_precision,rouge2_recall,rouge2_f1,rougeL_precision,rougeL_recall,rougeL_f1,runtime_ms,summary_sentences,summary_words,compression_ratio
+TextRank,150,0.216,0.4651,0.287,0.0752,0.1677,0.1013,0.1481,0.321,0.1975,3.3037,3.0,70.4267,0.185
+TextRank + MMR,150,0.219,0.4712,0.2911,0.0772,0.1697,0.1033,0.1506,0.3245,0.2004,3.3579,3.0,70.3133,0.1834
+Lead-3,150,0.2328,0.4877,0.3058,0.0942,0.2061,0.1253,0.1603,0.3422,0.2119,0.0054,3.0,66.5,0.1752
+Random-3,150,0.2146,0.3953,0.2701,0.0649,0.1254,0.0829,0.1445,0.2705,0.1826,0.0268,3.0,60.26,0.1609
