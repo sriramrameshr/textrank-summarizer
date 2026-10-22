@@ -16,6 +16,7 @@ Windows only (System.Speech). If you prefer your own voice, record the script in
 from __future__ import annotations
 
 import math
+import json
 import random
 import subprocess
 import sys
@@ -31,6 +32,7 @@ FIGURES = ROOT / "results" / "figures"
 DELIVERABLES = ROOT / "deliverables"
 BUILD = ROOT / "build" / "demo_video"
 OUTPUT = DELIVERABLES / "demo_video.mp4"
+STUDENT = json.loads((ROOT / "report" / "student.json").read_text(encoding="utf-8"))
 
 W, H = 1920, 1080
 FPS = 30
@@ -369,6 +371,18 @@ def title_slide(scene: Scene, index: int, total: int) -> Image.Image:
         font=font(31),
         fill=(205, 224, 238),
     )
+    draw.text(
+        (100, y + 84),
+        f"{STUDENT['student_name']}  ·  {STUDENT['roll_number']}",
+        font=font(28, semibold=True),
+        fill=WHITE,
+    )
+    draw.text(
+        (100, y + 126),
+        f"{STUDENT['institution']}  ·  {STUDENT['department']}",
+        font=font(19),
+        fill=MUTED,
+    )
 
     x = 100
     for label, bg in (
@@ -543,6 +557,12 @@ def closing_slide(scene: Scene, index: int, total: int) -> Image.Image:
     draw.text((100, 810), "Dataset and Punkt model cached   ·   seeded evaluation   ·   MIT licence",
               font=font(22), fill=(196, 216, 231))
     draw.text((100, 870), "Thank you for watching.", font=font(28, semibold=True), fill=WHITE)
+    draw.text(
+        (100, 930),
+        f"{STUDENT['student_name']}  ·  {STUDENT['roll_number']}  ·  {STUDENT['institution']}",
+        font=font(21),
+        fill=(196, 216, 231),
+    )
     draw.rectangle((0, H - 8, int(W * index / total), H), fill=ACCENT)
     return image.convert("RGB")
 

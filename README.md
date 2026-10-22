@@ -2,6 +2,8 @@
 
 A compact, reproducible **TextRank** extractive summariser built from first principles, evaluated with **ROUGE-1 / ROUGE-2 / ROUGE-L** against human-written CNN/DailyMail summaries, and shipped with an interactive Streamlit demo.
 
+**Sriram R** · E720524AM029 · Easa College of Engineering and Technology · BE-CSE (AIML)
+
 No training, no GPU, no external LLM — sentences are nodes in a TF-IDF cosine-similarity graph, and PageRank decides which sentences enter the summary.
 
 **Python 3.10+** · **MIT licensed** · **150 CNN/DailyMail test articles** · **~3.2 ms per article**
