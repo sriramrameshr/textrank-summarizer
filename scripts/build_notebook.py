@@ -684,8 +684,8 @@ streamlit run src/app.py
 - [x] Streamlit application and screenshots (`src/app.py`, `results/figures/app_*.png`)
 - [x] Term project report PDF (`deliverables/project_report.pdf`)
 - [x] Output screenshots PDF (`deliverables/output_screenshots.pdf`)
-- [ ] Demo video MP4 (2–3 minutes)
-- [ ] Public GitHub repository link
+- [x] Demo video MP4 (2–3 minutes)
+- [x] Public GitHub repository — github.com/sriramrameshr/textrank-summarizer
 """
 )
 

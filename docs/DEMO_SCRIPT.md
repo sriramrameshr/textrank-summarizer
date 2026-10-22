@@ -2,6 +2,8 @@
 
 **Deliverable:** `deliverables/demo_video.mp4` · 1920×1080 · 30 fps · 2:20–2:40 long · clear voice-over or burned-in captions.
 
+> **Already generated:** `scripts/build_demo_video.py` produces a 2:48 narrated walkthrough from the app screenshots, charts and notebook, and attaches it to the GitHub release. Use this plan if you want to replace it with your own voice or a live screen recording.
+
 This plan is a single continuous screen recording. Rehearse once, then record in one take; small pauses are fine and can be trimmed.
 
 ---
@@ -54,7 +56,7 @@ This plan is a single continuous screen recording. Rehearse once, then record in
 
 **Say:**
 
-> "Here is a CNN/DailyMail article and its human-written reference. The app has extracted three sentences — about eighteen percent of the source — and scored them live against the reference. The cards show ROUGE-1, ROUGE-2 and ROUGE-L F1, plus the delta against the Lead-3 baseline."
+> "Here is a CNN/DailyMail article and its human-written reference. The app has extracted three sentences — about thirteen percent of this article — and scored them live against the reference. The cards show ROUGE-1, ROUGE-2 and ROUGE-L F1, plus the delta against the Lead-3 baseline."
 
 **Action:** Change **Summary length** to 5, then back to 3. Optionally move **Damping factor α** from 0.85 to 0.80.
 

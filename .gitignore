@@ -29,3 +29,4 @@ deliverables/demo_video.mp4
 
 # Temporary renders
 report/*.tmp.html
+build/

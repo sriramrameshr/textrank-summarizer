@@ -131,7 +131,7 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 </ol>
 <h3>1.4 Contributions</h3>
 <ul>
-<li>A clean, dependency-light implementation of TextRank that runs in about 3.3 ms per article on a CPU.</li>
+<li>A clean, dependency-light implementation of TextRank that runs in about 3.2 ms per article on a CPU.</li>
 <li>A reproducible ROUGE evaluation on a cached CNN/DailyMail slice, with bootstrap confidence intervals and paired significance tests.</li>
 <li>An honest analysis of the Lead-3 effect, including per-document wins and losses.</li>
 <li>A working demonstration application with live ROUGE scoring, and the full replication package (notebook, scripts, figures, report).</li>
@@ -366,7 +366,7 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 </tr>
 </tbody>
 </table>
-<p>The implementation is organised as importable modules (<code>src/</code>) shared by the notebook, the experiment runner and the web application. The full evaluation — 150 documents × 6 summary lengths × 4 methods = 3,600 summaries — runs in 6.8 seconds on a laptop CPU, excluding ROUGE scoring.</p>
+<p>The implementation is organised as importable modules (<code>src/</code>) shared by the notebook, the experiment runner and the web application. The full evaluation — 150 documents × 6 summary lengths × 4 methods = 3,600 summaries — runs in 6.6 seconds on a laptop CPU, excluding ROUGE scoring.</p>
 <h3>4.4 Protocol</h3>
 <p>Every method extracts exactly <em>k</em> = 3 sentences for the primary comparison, matching the average reference length of 2.5 sentences. The length sweep repeats the evaluation for <em>k</em> ∈ {2, 3, 4, 5, 6, 8}. All methods are evaluated on the same documents and against the same references; ROUGE uses Porter stemming.</p>
 <h2>5. Results</h2>
@@ -678,7 +678,7 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 
 <p>The best case (+35.8 ROUGE-1 points) is an article whose lede is scene-setting and whose key facts appear later: the graph finds them, while Lead-3 cannot. The worst case (-49.0 points) shows the opposite pattern — a tightly written inverted-pyramid article in which the first three sentences already contain almost every reference fact. TextRank spends part of its budget on a central but background sentence, and precision falls.</p>
 <h3>5.7 Efficiency</h3>
-<p>At <em>k</em> = 3, TextRank takes <strong>3.30 ms</strong> per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.8 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.</p>
+<p>At <em>k</em> = 3, TextRank takes <strong>3.18 ms</strong> per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.6 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.</p>
 <h3>5.8 Demonstration application</h3>
 <figure><img src="../results/figures/app_overview.png" style="width:100%"><figcaption>Figure 8. Streamlit demonstration: generated summary, reference summary and live ROUGE metrics.</figcaption></figure>
 
@@ -701,7 +701,7 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 <h3>6.4 Ethical considerations</h3>
 <p>Extractive summarisation cannot fabricate facts, which is a meaningful safety advantage over abstractive models. It can, however, amplify selection bias: if the graph systematically favours certain perspectives, the summary inherits that bias. It can also produce misleading summaries by removing necessary context. Any deployment should preserve a link to the source and make clear that the output is an extract.</p>
 <h2>7. Conclusion and future work</h2>
-<p>This project implemented TextRank from first principles and evaluated it rigorously against human summaries. The pipeline — sentence segmentation, TF-IDF representation, cosine-similarity graph, PageRank with <em>d</em> = 0.85, ranked extraction and chronological re-ordering — is compact, interpretable and fast (3.3 ms per article). On 150 CNN/DailyMail test articles it reaches 28.70 ROUGE-1 F1, 10.13 ROUGE-2 F1 and 19.75 ROUGE-L F1, significantly beating a random baseline while trailing the strong Lead-3 baseline. The analysis explains both outcomes and identifies where the graph adds value.</p>
+<p>This project implemented TextRank from first principles and evaluated it rigorously against human summaries. The pipeline — sentence segmentation, TF-IDF representation, cosine-similarity graph, PageRank with <em>d</em> = 0.85, ranked extraction and chronological re-ordering — is compact, interpretable and fast (3.2 ms per article). On 150 CNN/DailyMail test articles it reaches 28.70 ROUGE-1 F1, 10.13 ROUGE-2 F1 and 19.75 ROUGE-L F1, significantly beating a random baseline while trailing the strong Lead-3 baseline. The analysis explains both outcomes and identifies where the graph adds value.</p>
 <p>Future work will pursue four directions: (i) a position-aware PageRank initialisation to combine the graph with the news prior; (ii) embedding-based sentence representations (Sentence-BERT) to capture paraphrase; (iii) a proper MMR or submodular selection objective for longer summaries; and (iv) evaluation with BERTScore and human judgements to complement lexical ROUGE.</p>
 <h2>8. References</h2>
 <ol>
@@ -742,7 +742,8 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 │   ├── capture_app.py                Playwright app screenshots
 │   ├── capture_notebook.py           Playwright notebook screenshots
 │   ├── build_report.py               Markdown -&gt; HTML -&gt; PDF report
-│   └── build_screenshots_pdf.py      screenshots compilation PDF
+│   ├── build_screenshots_pdf.py      screenshots compilation PDF
+│   └── build_demo_video.py           narrated MP4 demo generator
 ├── results/
 │   ├── per_document.csv              one row per (document, method, k)
 │   ├── results_table_k3.csv          main results table
@@ -755,7 +756,7 @@ blockquote { border-left: 3px solid #c55a11; margin: 10px 0; padding: 6px 12px; 
 └── deliverables/
     ├── project_report.pdf
     ├── output_screenshots.pdf
-    └── demo_video.mp4                (recorded separately)
+    └── demo_video.mp4                narrated walkthrough (GitHub release)
 </code></pre>
 <h2>10. Appendix B — Reproduction guide</h2>
 <pre><code class="language-bash"># 1. Environment
@@ -779,6 +780,9 @@ streamlit run src/app.py
 # 6. Report and screenshots PDF
 python scripts/build_report.py
 python scripts/build_screenshots_pdf.py
+
+# 7. Narrated demo video (Windows SAPI)
+python scripts/build_demo_video.py
 </code></pre>
 <p>All random operations are seeded (seed 42); rerunning the commands above reproduces the reported numbers exactly, up to library-version differences.</p>
 <div class="page-break"></div>

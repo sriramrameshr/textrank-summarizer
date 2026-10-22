@@ -4,7 +4,7 @@ A compact, reproducible **TextRank** extractive summariser built from first prin
 
 No training, no GPU, no external LLM — sentences are nodes in a TF-IDF cosine-similarity graph, and PageRank decides which sentences enter the summary.
 
-**Python 3.10+** · **MIT licensed** · **150 CNN/DailyMail test articles** · **~3.4 ms per article**
+**Python 3.10+** · **MIT licensed** · **150 CNN/DailyMail test articles** · **~3.2 ms per article**
 
 ![Streamlit demo](results/figures/app_overview.png)
 
@@ -114,6 +114,7 @@ python scripts/build_notebook.py        # rebuilds and executes the notebook
 ```bash
 python scripts/build_report.py          # report/report.md → deliverables/project_report.pdf
 python scripts/build_screenshots_pdf.py # results/figures/app_*.png → deliverables/output_screenshots.pdf
+python scripts/build_demo_video.py      # optional: regenerate the narrated demo (Windows SAPI)
 ```
 
 - `build_report.py` renders styled HTML and prints it to PDF with headless Microsoft Edge. Set `EDGE_PATH` in the script if Edge is installed elsewhere.
@@ -151,6 +152,7 @@ textrank-summarizer/
 │   ├── capture_notebook.py            Playwright notebook screenshots
 │   ├── build_report.py                Markdown → HTML → PDF report
 │   ├── build_screenshots_pdf.py       screenshots compilation PDF
+│   ├── build_demo_video.py            narrated MP4 demo generator
 │   └── make_diagrams.py               pipeline and equation images
 ├── results/
 │   ├── per_document.csv               per (document, method, k) scores
@@ -169,7 +171,7 @@ textrank-summarizer/
 └── deliverables/
     ├── project_report.pdf             17-page report
     ├── output_screenshots.pdf         23-page screenshot compilation
-    └── demo_video.mp4                 recorded separately (not committed)
+    └── demo_video.mp4                 2:48 narrated walkthrough (also a release asset)
 ```
 
 ---
@@ -205,13 +207,15 @@ The cache makes the notebook, experiments and app fully reproducible offline. Th
 | Executed notebook | `notebooks/textrank_evaluation.ipynb` | Done — 27 cells, 10 figures, 12 tables, 0 errors |
 | Project report (PDF) | `deliverables/project_report.pdf` | Done — 17 pages |
 | Output screenshots (PDF) | `deliverables/output_screenshots.pdf` | Done — 23 pages |
-| Demo video (2–3 min) | `deliverables/demo_video.mp4` | Record with [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md) |
-| Public GitHub repository | this repository | Push and submit the URL |
+| Demo video (2–3 min) | `deliverables/demo_video.mp4` | Done — 2:48, 1080p, narrated; also attached to the GitHub release |
+| Public GitHub repository | <https://github.com/sriramrameshr/textrank-summarizer> | Done — public |
+
+**Demo video:** [github.com/sriramrameshr/textrank-summarizer/releases](https://github.com/sriramrameshr/textrank-summarizer/releases)
 
 **Before submitting, replace the placeholders:**
 
 1. Edit [`report/student.json`](report/student.json) with your real name, roll number, semester, institution and guide.
-2. Rebuild all three artefacts so the details propagate to every cover page:
+2. Rebuild the artefacts so the details propagate to every cover page:
 
    ```bash
    python scripts/build_notebook.py
@@ -220,8 +224,8 @@ The cache makes the notebook, experiments and app fully reproducible offline. Th
    python scripts/build_screenshots_pdf.py
    ```
 
-3. Record the demo video following `docs/DEMO_SCRIPT.md`.
-4. Push the repository and add the GitHub link (and optionally the video link) to your submission.
+3. Review the generated demo video. If you prefer your own voice, re-record it with `docs/DEMO_SCRIPT.md` and replace `deliverables/demo_video.mp4`.
+4. Commit and push the updated files; refresh the GitHub release asset if the report or video changed.
 
 ---
 

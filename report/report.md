@@ -85,7 +85,7 @@ Given a document consisting of sentences *S* = (S₁, …, Sₙ), produce a summ
 
 ### 1.4 Contributions
 
-* A clean, dependency-light implementation of TextRank that runs in about 3.3 ms per article on a CPU.
+* A clean, dependency-light implementation of TextRank that runs in about 3.2 ms per article on a CPU.
 * A reproducible ROUGE evaluation on a cached CNN/DailyMail slice, with bootstrap confidence intervals and paired significance tests.
 * An honest analysis of the Lead-3 effect, including per-document wins and losses.
 * A working demonstration application with live ROUGE scoring, and the full replication package (notebook, scripts, figures, report).
@@ -240,7 +240,7 @@ CNN/DailyMail is the standard benchmark for summarisation. Each example pairs a 
 | scipy        | 1.18.1    |
 
 
-The implementation is organised as importable modules (`src/`) shared by the notebook, the experiment runner and the web application. The full evaluation — 150 documents × 6 summary lengths × 4 methods = 3,600 summaries — runs in 6.8 seconds on a laptop CPU, excluding ROUGE scoring.
+The implementation is organised as importable modules (`src/`) shared by the notebook, the experiment runner and the web application. The full evaluation — 150 documents × 6 summary lengths × 4 methods = 3,600 summaries — runs in 6.6 seconds on a laptop CPU, excluding ROUGE scoring.
 
 ### 4.4 Protocol
 
@@ -373,7 +373,7 @@ The best case (+35.8 ROUGE-1 points) is an article whose lede is scene-setting a
 
 ### 5.7 Efficiency
 
-At *k* = 3, TextRank takes **3.30 ms** per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.8 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.
+At *k* = 3, TextRank takes **3.18 ms** per article on average, including TF-IDF construction and PageRank. Lead-3 takes 0.01 ms and Random-3 0.03 ms. The full 3,600-summary evaluation takes 6.6 s, with ROUGE scoring accounting for most of the wall-clock time. The method is therefore suitable for interactive use, which is why the demo can score summaries live.
 
 ### 5.8 Demonstration application
 
@@ -409,7 +409,7 @@ Extractive summarisation cannot fabricate facts, which is a meaningful safety ad
 
 ## 7. Conclusion and future work
 
-This project implemented TextRank from first principles and evaluated it rigorously against human summaries. The pipeline — sentence segmentation, TF-IDF representation, cosine-similarity graph, PageRank with *d* = 0.85, ranked extraction and chronological re-ordering — is compact, interpretable and fast (3.3 ms per article). On 150 CNN/DailyMail test articles it reaches 28.70 ROUGE-1 F1, 10.13 ROUGE-2 F1 and 19.75 ROUGE-L F1, significantly beating a random baseline while trailing the strong Lead-3 baseline. The analysis explains both outcomes and identifies where the graph adds value.
+This project implemented TextRank from first principles and evaluated it rigorously against human summaries. The pipeline — sentence segmentation, TF-IDF representation, cosine-similarity graph, PageRank with *d* = 0.85, ranked extraction and chronological re-ordering — is compact, interpretable and fast (3.2 ms per article). On 150 CNN/DailyMail test articles it reaches 28.70 ROUGE-1 F1, 10.13 ROUGE-2 F1 and 19.75 ROUGE-L F1, significantly beating a random baseline while trailing the strong Lead-3 baseline. The analysis explains both outcomes and identifies where the graph adds value.
 
 Future work will pursue four directions: (i) a position-aware PageRank initialisation to combine the graph with the news prior; (ii) embedding-based sentence representations (Sentence-BERT) to capture paraphrase; (iii) a proper MMR or submodular selection objective for longer summaries; and (iv) evaluation with BERTScore and human judgements to complement lexical ROUGE.
 
@@ -454,7 +454,8 @@ textrank-summarizer/
 │   ├── capture_app.py                Playwright app screenshots
 │   ├── capture_notebook.py           Playwright notebook screenshots
 │   ├── build_report.py               Markdown -> HTML -> PDF report
-│   └── build_screenshots_pdf.py      screenshots compilation PDF
+│   ├── build_screenshots_pdf.py      screenshots compilation PDF
+│   └── build_demo_video.py           narrated MP4 demo generator
 ├── results/
 │   ├── per_document.csv              one row per (document, method, k)
 │   ├── results_table_k3.csv          main results table
@@ -467,7 +468,7 @@ textrank-summarizer/
 └── deliverables/
     ├── project_report.pdf
     ├── output_screenshots.pdf
-    └── demo_video.mp4                (recorded separately)
+    └── demo_video.mp4                narrated walkthrough (GitHub release)
 ```
 
 ## 10. Appendix B — Reproduction guide
@@ -494,6 +495,9 @@ streamlit run src/app.py
 # 6. Report and screenshots PDF
 python scripts/build_report.py
 python scripts/build_screenshots_pdf.py
+
+# 7. Narrated demo video (Windows SAPI)
+python scripts/build_demo_video.py
 ```
 
 All random operations are seeded (seed 42); rerunning the commands above reproduces the reported numbers exactly, up to library-version differences.

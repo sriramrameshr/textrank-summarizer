@@ -604,7 +604,8 @@ textrank-summarizer/
 │   ├── capture_app.py                Playwright app screenshots
 │   ├── capture_notebook.py           Playwright notebook screenshots
 │   ├── build_report.py               Markdown -> HTML -> PDF report
-│   └── build_screenshots_pdf.py      screenshots compilation PDF
+│   ├── build_screenshots_pdf.py      screenshots compilation PDF
+│   └── build_demo_video.py           narrated MP4 demo generator
 ├── results/
 │   ├── per_document.csv              one row per (document, method, k)
 │   ├── results_table_k3.csv          main results table
@@ -617,7 +618,7 @@ textrank-summarizer/
 └── deliverables/
     ├── project_report.pdf
     ├── output_screenshots.pdf
-    └── demo_video.mp4                (recorded separately)
+    └── demo_video.mp4                narrated walkthrough (GitHub release)
 ```
 
 ## 10. Appendix B — Reproduction guide
@@ -644,6 +645,9 @@ streamlit run src/app.py
 # 6. Report and screenshots PDF
 python scripts/build_report.py
 python scripts/build_screenshots_pdf.py
+
+# 7. Narrated demo video (Windows SAPI)
+python scripts/build_demo_video.py
 ```
 
 All random operations are seeded (seed {CONFIG['random_seed']}); rerunning the commands above reproduces the reported numbers exactly, up to library-version differences.
