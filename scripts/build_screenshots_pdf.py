@@ -226,9 +226,9 @@ h2 { font-size: 13.5pt; color: #16324f; margin: 4px 0 10px; page-break-after: av
 .cover-rule { width: 55%; height: 3px; background: #1f4e79; margin: 14px auto 24px; }
 .cover-kicker { font-size: 10pt; letter-spacing: 3px; color: #c55a11; font-weight: 700; }
 .cover-subtitle { font-size: 12pt; color: #4a5568; line-height: 1.5; margin: 6px auto 26px; }
-.cover-table { width: 110mm; margin: 0 auto; border-collapse: collapse; font-size: 10.5pt; }
+.cover-table { width: 128mm; margin: 0 auto; border-collapse: collapse; font-size: 10.5pt; }
 .cover-table td { border: none; border-bottom: 1px solid #e3eaf2; padding: 7px 5px; text-align: left; }
-.cover-table td:first-child { color: #5b6b7b; width: 38%; }
+.cover-table td:first-child { color: #5b6b7b; width: 32%; }
 .cover-contents { width: 128mm; margin: 24px auto 0; text-align: left; font-size: 9.6pt; color: #33475b; }
 .cover-contents ol { margin: 6px 0 0 18px; padding: 0; }
 .cover-contents li { margin: 3px 0; }
