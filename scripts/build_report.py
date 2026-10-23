@@ -4,7 +4,9 @@
 
 The Markdown source is written to report/report.md so it can be edited and
 re-rendered. The PDF is produced by printing the styled HTML with headless
-Microsoft Edge, so no LaTeX installation is required.
+Microsoft Edge, so no LaTeX installation is required. When
+report/front_matter.pdf exists, its official cover and bonafide certificate
+replace the generated cover.
 """
 
 from __future__ import annotations
@@ -22,6 +24,7 @@ matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
 import pandas as pd
+import pymupdf
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_DIR = ROOT / "report"
@@ -757,6 +760,39 @@ def render_pdf(html_path: Path, pdf_path: Path) -> None:
         raise RuntimeError(f"PDF generation failed or produced an empty file: {pdf_path}")
 
 
+def merge_front_matter(pdf_path: Path) -> None:
+    """Replace the generated cover with the official cover and bonafide certificate."""
+    front_path = REPORT_DIR / "front_matter.pdf"
+    if not front_path.exists():
+        return
+    front = pymupdf.open(front_path)
+    if front.page_count != 2:
+        front.close()
+        raise RuntimeError(f"{front_path} must contain exactly the cover and certificate pages")
+
+    report = pymupdf.open(pdf_path)
+    old_metadata = report.metadata
+    report.delete_page(0)
+    report.insert_pdf(front, start_at=0)
+    report.set_metadata(
+        {
+            "title": "Extractive Text Summarisation with TextRank - Mini Project Report",
+            "author": STUDENT["student_name"],
+            "subject": "BE-CSE (AIML) mini project report",
+            "keywords": "TextRank, extractive summarisation, NLP, ROUGE, CNN/DailyMail",
+            "creator": old_metadata.get("creator", ""),
+            "producer": old_metadata.get("producer", ""),
+            "creationDate": old_metadata.get("creationDate", ""),
+            "modDate": old_metadata.get("modDate", ""),
+        }
+    )
+    merged_path = pdf_path.with_name(f"{pdf_path.stem}.merged.pdf")
+    report.save(merged_path, garbage=4, deflate=True)
+    report.close()
+    front.close()
+    merged_path.replace(pdf_path)
+
+
 def main() -> None:
     import markdown
 
@@ -777,6 +813,7 @@ def main() -> None:
 
     pdf_path = DELIVERABLES / "project_report.pdf"
     render_pdf(html_path, pdf_path)
+    merge_front_matter(pdf_path)
     print(f"wrote {REPORT_DIR / 'report.md'}")
     print(f"wrote {html_path}")
     print(f"wrote {pdf_path} ({pdf_path.stat().st_size / 1024:.0f} KB)")

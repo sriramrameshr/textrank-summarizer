@@ -167,11 +167,12 @@ textrank-summarizer/
 ├── report/
 │   ├── report.md                      Markdown report source (generated)
 │   ├── report.html                    rendered HTML
+│   ├── front_matter.pdf               official college cover and bonafide certificate
 │   └── student.json                   single source of truth for cover details
 ├── docs/
 │   └── DEMO_SCRIPT.md                 2–3 minute demo recording plan
 └── deliverables/
-    ├── project_report.pdf             17-page report
+    ├── project_report.pdf             18-page report
     ├── output_screenshots.pdf         23-page screenshot compilation
     └── demo_video.mp4                 2:48 narrated walkthrough (also a release asset)
 ```
@@ -207,7 +208,7 @@ The cache makes the notebook, experiments and app fully reproducible offline. Th
 | Deliverable | Location | Status |
 |:--|:--|:--|
 | Executed notebook | `notebooks/textrank_evaluation.ipynb` | Done — 27 cells, 10 figures, 12 tables, 0 errors |
-| Project report (PDF) | `deliverables/project_report.pdf` | Done — 17 pages |
+| Project report (PDF) | `deliverables/project_report.pdf` | Done — 18 pages |
 | Output screenshots (PDF) | `deliverables/output_screenshots.pdf` | Done — 23 pages |
 | Demo video (2–3 min) | `deliverables/demo_video.mp4` | Done — 2:48, 1080p, narrated; also attached to the GitHub release |
 | Public GitHub repository | <https://github.com/sriramrameshr/textrank-summarizer> | Done — public |
@@ -216,7 +217,7 @@ The cache makes the notebook, experiments and app fully reproducible offline. Th
 
 **Before submitting, replace the placeholders:**
 
-1. Edit [`report/student.json`](report/student.json) with your real name, roll number, semester, institution and guide.
+1. Edit [`report/student.json`](report/student.json) with your real name, roll number, semester and institution. The official college cover and bonafide certificate live in [`report/front_matter.pdf`](report/front_matter.pdf); update that PDF too if the student details change.
 2. Rebuild the artefacts so the details propagate to every cover page:
 
    ```bash
@@ -225,6 +226,8 @@ The cache makes the notebook, experiments and app fully reproducible offline. Th
    python scripts/build_report.py
    python scripts/build_screenshots_pdf.py
    ```
+
+   `build_report.py` automatically replaces its generated cover with the two official pages from `report/front_matter.pdf`, so the final PDF has the college cover and bonafide certificate first.
 
 3. Review the generated demo video. If you prefer your own voice, re-record it with `docs/DEMO_SCRIPT.md` and replace `deliverables/demo_video.mp4`.
 4. Commit and push the updated files; refresh the GitHub release asset if the report or video changed.

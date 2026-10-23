@@ -551,7 +551,7 @@ def closing_slide(scene: Scene, index: int, total: int) -> Image.Image:
     draw.text((130, 562), "textrank-summarizer", font=font(38, bold=True), fill=BLUE)
 
     x = 100
-    for label in ("27-cell notebook", "17-page report", "23-page screenshots", "2,000-resample CIs"):
+    for label in ("27-cell notebook", "18-page report", "23-page screenshots", "2,000-resample CIs"):
         x = pill(draw, x, 720, label, bg=(38, 86, 122))
 
     draw.text((100, 810), "Dataset and Punkt model cached   ·   seeded evaluation   ·   MIT licence",
